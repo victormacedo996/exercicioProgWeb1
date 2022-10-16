@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.gerenciadordecarros.domain.Carro;
+import com.example.gerenciadordecarros.service.AcessorioService;
 import com.example.gerenciadordecarros.service.CarroService;
+import com.example.gerenciadordecarros.service.ChaveService;
+import com.example.gerenciadordecarros.service.DocumentoService;
+import com.example.gerenciadordecarros.service.FabricanteService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -19,6 +23,18 @@ public class CarroController {
 
     @Autowired
     private CarroService service;
+    
+    @Autowired
+    private ChaveService chaveService;
+    
+    @Autowired
+    private DocumentoService documentoService;
+    
+    @Autowired
+    private FabricanteService fabricanteService;
+    
+    @Autowired
+    private AcessorioService acessorioService;
 
 
 
@@ -33,6 +49,10 @@ public class CarroController {
     public ModelAndView cadastrar() {
         ModelAndView mv = new ModelAndView("carros/cadastrar");
         mv.addObject("carro", new Carro());
+        mv.addObject("documentos", documentoService.findAll());
+        mv.addObject("chaves", chaveService.findAll());
+        mv.addObject("fabricantes", fabricanteService.findAll());
+        mv.addObject("acessorios", acessorioService.findAll());
        
         return mv;
     }

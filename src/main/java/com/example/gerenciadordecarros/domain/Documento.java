@@ -19,7 +19,12 @@ public class Documento implements Serializable {
     @Column(name="numero")
     private String numero;
 
-    public int getId() {
+
+    public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public int getId() {
         return id;
     }
 

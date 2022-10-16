@@ -28,6 +28,20 @@
                                 <label for="modeloInput">Modelo</label>
                                 <input id="modeloInput" type="text" class="form-control input-sm" th:field="*{modelo}" autofocus="autofocus" placeholder="Informe o modelo" maxlength="50" name="" />
                             </div>
+                            <div class="form-group">
+	                        	<select class="form-control" th:field="*{chave}">
+		                            <option value="">Selecione uma chave</option>
+		                            <option th:each="chave : ${chaves}" th:value="${chave.id}" th:text="${chave.codigo}" ></option>
+                        		</select>
+                    		</div>
+                    		<select class="form-control" th:field="*{documento}">
+                            	<option value="">Selecione o documento</option>
+                            	<option th:each="documento : ${documentos}" th:value="${documento.id}" th:text="${documento.numero}" ></option>
+                        	</select>
+                        	<select class="form-control" th:field="*{acessorio}">
+                            	<option value="">Selecione o documento</option>
+                            	<option th:each="acessorio : ${acessorios}" th:value="${acessorio.id}" th:text="${acessorio.nome}" ></option>
+                        	</select>
 						</fieldset>
                     </div>
                     <div align="center">

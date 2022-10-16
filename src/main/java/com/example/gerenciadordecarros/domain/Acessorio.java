@@ -1,11 +1,15 @@
 package com.example.gerenciadordecarros.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +23,14 @@ public class Acessorio implements Serializable {
     private int id;
 
     private String nome;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "acessorio_carro",
+        joinColumns = { @JoinColumn(name = "acessorio_id") },
+        inverseJoinColumns = { @JoinColumn(name = "carro_id") }
+    )
+    private List<Carro> acessorios;
 
     public int getId() {
         return id;
