@@ -61,6 +61,7 @@ public class CarroController {
     public String salvar(Carro carro) {
         service.save(carro);
         return "redirect:/carros/listar";
+        
     }
 
     @GetMapping("/deletar/{id}")

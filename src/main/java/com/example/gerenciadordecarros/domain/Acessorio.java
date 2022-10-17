@@ -26,7 +26,7 @@ public class Acessorio implements Serializable {
     
     @ManyToMany
     @JoinTable(
-        name = "acessorio_carro",
+        name = "carros_acessorio",
         joinColumns = { @JoinColumn(name = "acessorio_id") },
         inverseJoinColumns = { @JoinColumn(name = "carro_id") }
     )

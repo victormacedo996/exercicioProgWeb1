@@ -26,7 +26,8 @@
                             <th>Modelo</th>
                             <th>chave</th>
                             <th>doc numero</th>
-                            <th>acessorio</th>
+                            <th>fabricante</th>
+                            <th>acessorios</th>
                             <th>Ação</th>
                         </tr>
                         </thead>
@@ -36,7 +37,8 @@
                             <td th:text="${carro.modelo}"></td>
                             <td th:text="${carro.chave.codigo}"></td>
                             <td th:text="${carro.documento.numero}"></td>
-                            <td th:text="${carro.acessorio.nome}"></td>
+                            <td th:text="${carro.fabricante.nome}"></td>
+                            <td th:text="${carro.acessorio}"></td>
                            
                             <td>
                                 <div class="btn-group pull-right">

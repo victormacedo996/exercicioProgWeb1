@@ -2,6 +2,7 @@ package com.example.gerenciadordecarros.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "carros")
@@ -15,9 +16,13 @@ public class Carro implements Serializable {
 
     private String modelo;
     
-    @ManyToOne
-    @JoinColumn(name = "id_acessorio")
-    private Acessorio acessorio;
+    @ManyToMany
+    @JoinTable(
+        name = "carros_acessorio",
+        joinColumns = { @JoinColumn(name = "acessorio_id") },
+        inverseJoinColumns = { @JoinColumn(name = "carro_id") }
+    )
+    private List<Acessorio> acessorio;
     
     @ManyToOne
     @JoinColumn(name = "id_fabricante")
@@ -30,16 +35,16 @@ public class Carro implements Serializable {
     private Chave chave;
     
 
-    public Acessorio getAcessorio() {
-		return acessorio;
+    public List<Acessorio> getAcessorio() {
+		return this.acessorio;
 	}
 
-	public void setAcessorio(Acessorio acessorio) {
+	public void setAcessorio(List<Acessorio> acessorio) {
 		this.acessorio = acessorio;
 	}
 
 	public Fabricante getFabricante() {
-		return fabricante;
+		return this.fabricante;
 	}
 
 	public void setFabricante(Fabricante fabricante) {
